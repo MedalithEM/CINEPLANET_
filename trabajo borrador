@@ -1,7 +1,201 @@
 CINEPLANET
 login 
 invitado
+peliculas
+import java.util.Scanner;
 
+public class PeliculasCineplanet{
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int categoria;
+        int pelicula;
+        int cantidad;
+        double precio = 0;
+        double total;
+
+        System.out.println("========= CINEPLANET =========");
+        System.out.println("1. En Cartelera");
+        System.out.println("2. Preventa");
+        System.out.println("3. Próximos Estrenos");
+        System.out.print("Seleccione categoría: ");
+        categoria = sc.nextInt();
+
+        switch (categoria) {
+
+            case 1:
+
+                System.out.println("===== EN CARTELERA =====");
+                System.out.println("1. Billie Eilish - S/ 25.00");
+                System.out.println("2. Iron Maiden Burning Ambition - S/ 22.00");
+                System.out.println("3. La Niña - S/ 18.00");
+                System.out.println("4. La chica que salta a través del tiempo - S/ 20.00");
+                System.out.println("5. Las Ovejas Detectives - S/ 15.00");
+                System.out.println("6. Los Niños Lobo - S/ 19.00");
+
+                System.out.print("Seleccione película: ");
+                pelicula = sc.nextInt();
+
+                switch (pelicula) {
+
+                    case 1:
+                        precio = 25.00;
+                        System.out.println("Película: Billie Eilish");
+                        break;
+
+                    case 2:
+                        precio = 22.00;
+                        System.out.println("Película: Iron Maiden Burning Ambition");
+                        break;
+
+                    case 3:
+                        precio = 18.00;
+                        System.out.println("Película: La Niña");
+                        break;
+
+                    case 4:
+                        precio = 20.00;
+                        System.out.println("Película: La chica que salta a través del tiempo");
+                        break;
+
+                    case 5:
+                        precio = 15.00;
+                        System.out.println("Película: Las Ovejas Detectives");
+                        break;
+
+                    case 6:
+                        precio = 19.00;
+                        System.out.println("Película: Los Niños Lobo");
+                        break;
+
+                    default:
+                        System.out.println("Película inválida");
+                        System.exit(0);
+                }
+
+                break;
+
+            case 2:
+
+                System.out.println("===== PREVENTA =====");
+                System.out.println("1. Top Gun Maverick - S/ 28.00");
+                System.out.println("2. Top Gun 1986 - S/ 24.00");
+                System.out.println("3. Umamusume Pretty Derby - S/ 20.00");
+                System.out.println("4. Mirai Mi pequeña hermana - S/ 18.00");
+                System.out.println("5. Summer Wars - S/ 17.00");
+                System.out.println("6. The Mandalorian and Grogu - S/ 30.00");
+
+                System.out.print("Seleccione película: ");
+                pelicula = sc.nextInt();
+
+                switch (pelicula) {
+
+                    case 1:
+                        precio = 28.00;
+                        System.out.println("Película: Top Gun Maverick");
+                        break;
+
+                    case 2:
+                        precio = 24.00;
+                        System.out.println("Película: Top Gun 1986");
+                        break;
+
+                    case 3:
+                        precio = 20.00;
+                        System.out.println("Película: Umamusume Pretty Derby");
+                        break;
+
+                    case 4:
+                        precio = 18.00;
+                        System.out.println("Película: Mirai Mi pequeña hermana");
+                        break;
+
+                    case 5:
+                        precio = 17.00;
+                        System.out.println("Película: Summer Wars");
+                        break;
+
+                    case 6:
+                        precio = 30.00;
+                        System.out.println("Película: The Mandalorian and Grogu");
+                        break;
+
+                    default:
+                        System.out.println("Película inválida");
+                        System.exit(0);
+                }
+
+                break;
+
+            case 3:
+
+                System.out.println("===== PRÓXIMOS ESTRENOS =====");
+                System.out.println("1. Aida y vuelta - S/ 21.00");
+                System.out.println("2. Hokum La Maldición de la Bruja - S/ 23.00");
+                System.out.println("3. Rebelión en la Granja - S/ 20.00");
+                System.out.println("4. Tú y yo La Toscana - S/ 19.00");
+                System.out.println("5. Volcán Fuego Bajo Tierra - S/ 26.00");
+                System.out.println("6. Coyotes - S/ 24.00");
+
+                System.out.print("Seleccione película: ");
+                pelicula = sc.nextInt();
+
+                switch (pelicula) {
+
+                    case 1:
+                        precio = 21.00;
+                        System.out.println("Película: Aida y vuelta");
+                        break;
+
+                    case 2:
+                        precio = 23.00;
+                        System.out.println("Película: Hokum La Maldición de la Bruja");
+                        break;
+
+                    case 3:
+                        precio = 20.00;
+                        System.out.println("Película: Rebelión en la Granja");
+                        break;
+
+                    case 4:
+                        precio = 19.00;
+                        System.out.println("Película: Tú y yo La Toscana");
+                        break;
+
+                    case 5:
+                        precio = 26.00;
+                        System.out.println("Película: Volcán Fuego Bajo Tierra");
+                        break;
+
+                    case 6:
+                        precio = 24.00;
+                        System.out.println("Película: Coyotes");
+                        break;
+
+                    default:
+                        System.out.println("Película inválida");
+                        System.exit(0);
+                }
+
+                break;
+
+            default:
+                System.out.println("Categoría inválida");
+                System.exit(0);
+        }
+
+        System.out.print("Cantidad de entradas: ");
+        cantidad = sc.nextInt();
+
+        if (cantidad <= 0) {
+            System.out.println("Cantidad inválida");
+            System.exit(0);
+        }
+
+    }
+}
 
 
 
