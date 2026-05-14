@@ -1,4 +1,76 @@
 CINEPLANET
+import java.util.Scanner;
+public class Cineplanet {
+    public static void main(String[] args) {
+        Scanner sn = new Scanner(System.in);
+        boolean estado = true;
+        int opcion;
+        String username="",password="";
+        System.out.println("Bienvenido a CINEPLANT");
+        while (estado) {
+            System.out.println("SELECCIONE:");
+            System.out.println("1.-Registarse");
+            System.out.println("2.-Iniciar sesion");
+            System.out.println("3.-Modo invitado");
+            System.out.println("4.-Salir");
+            opcion = sn.nextInt();
+            sn.nextLine();
+            switch (opcion) {
+                case 1:
+                    System.out.println("Ingrese username(dni)");
+                    username= sn.nextLine();
+                    System.out.println("Ingrese password");
+                    password= sn.nextLine();
+                    System.out.println("confirme su password");
+                    String password_in= sn.nextLine();
+                    validarPassword(password_in,password);
+                    break;
+                case 2:
+                    System.out.println("Ingrese su username");
+                    String username_in= sn.nextLine();
+                    System.out.println("Ingrese su password");
+                    password_in= sn.nextLine();
+                    validarInicio(password,password_in,username,username_in);
+                    break;
+                case 3:
+                    menuPrincipal();
+                    break;
+                case 4:
+                    estado = false;
+                    System.out.println("Saliendo de la pagina...");
+                    break;
+                default:
+            }
+        }
+    }
+    public static void menuPrincipal (){
+            System.out.println("----Menú principal----");
+            System.out.println("1.-Peliculas");
+            System.out.println("2.-Cines");
+            System.out.println("3.-Promociones");
+            System.out.println("4.-Socio");
+            System.out.println("4.-Dulcería");
+    }
+    public static void validarPassword(String password,String password_in){
+        if(password.equals(password_in)){
+               System.out.println("Contraseña validada");
+               System.out.println("Ahora puede INICIAR SESION...");
+        }
+        else{
+            System.out.println("Contraseña ingresada incorrecta.Vuelva a registrase");
+        }
+    }
+    public static void validarInicio (String password,String password_in,String username,String username_in){
+        if(password.equals(password_in)&&username.equals(username_in)){
+            System.out.println("Datos validados");
+            menuPrincipal();
+        }
+        else{
+            System.out.println("Contraseña ingresada incorrecta.Vuelva a registrase");
+        }
+    }
+
+}
 login 
 invitado
 peliculas
