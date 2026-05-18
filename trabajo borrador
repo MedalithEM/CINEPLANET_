@@ -43,7 +43,7 @@ public class Cineplanet {
             }
         }
     }
-    public static void menuPrincipal (){
+    public static void menuPrincipal (Scanner sc){
             System.out.println("----Menú principal----");
             System.out.println("1.-Peliculas");
             System.out.println("2.-Cines");
