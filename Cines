@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class CINE{
-    public static void main(String[] args) {
+
         Scanner sc=new Scanner(System.in);
         System.out.println("========= CINES =========");
         System.out.println("TODAS LAS CIUDADES ");
@@ -486,4 +486,4 @@ public static void boleta(String pelicula, double precio, int cantidad){
     System.out.println("Disfrute su pelicula");
     System.out.println("------------------------------------------");
 }
-}
+
