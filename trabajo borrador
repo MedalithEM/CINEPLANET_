@@ -2,7 +2,7 @@ CINEPLANET
 import java.util.Scanner;
 public class Cineplanet {
     public static void main(String[] args) {
-        Scanner sn = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         boolean estado = true;
         int opcion;
         String username="",password="";
@@ -13,23 +13,23 @@ public class Cineplanet {
             System.out.println("2.-Iniciar sesion");
             System.out.println("3.-Modo invitado");
             System.out.println("4.-Salir");
-            opcion = sn.nextInt();
-            sn.nextLine();
+            opcion = sc.nextInt();
+            sc.nextLine();
             switch (opcion) {
                 case 1:
                     System.out.println("Ingrese username(dni)");
-                    username= sn.nextLine();
+                    username= sc.nextLine();
                     System.out.println("Ingrese password");
-                    password= sn.nextLine();
+                    password= sc.nextLine();
                     System.out.println("confirme su password");
-                    String password_in= sn.nextLine();
+                    String password_in= sc.nextLine();
                     validarPassword(password_in,password);
                     break;
                 case 2:
                     System.out.println("Ingrese su username");
-                    String username_in= sn.nextLine();
+                    String username_in= sc.nextLine();
                     System.out.println("Ingrese su password");
-                    password_in= sn.nextLine();
+                    password_in= sc.nextLine();
                     validarInicio(password,password_in,username,username_in);
                     break;
                 case 3:
@@ -50,6 +50,26 @@ public class Cineplanet {
             System.out.println("3.-Promociones");
             System.out.println("4.-Socio");
             System.out.println("4.-Dulcería");
+int opcion = sc.nextInt();
+        switch (opcion) {
+            case 1:
+                System.out.println("Peliculas Cineplanet  🎬📽️");
+                break;
+            case 2:
+                System.out.println("Ubicacion de Cines 🛰️");
+                break;
+            case 3:
+               Promociones(sc);
+                break;
+            case 4:
+                System.out.println("Zona Socio 👤");
+                break;
+            case 5:
+                System.out.println("Dulceria 🍿🥤");
+                break;
+            default:
+                System.out.println("Opcion Invalida");
+        }
     }
     public static void validarPassword(String password,String password_in){
         if(password.equals(password_in)){
@@ -69,7 +89,73 @@ public class Cineplanet {
             System.out.println("Contraseña ingresada incorrecta.Vuelva a registrase");
         }
     }
-
+  public static void Promociones(Scanner sc){
+        System.out.println("----Promociones Cineplanet----");
+        System.out.println("1.-PROMOS 2x1 CON ENTEL");
+        System.out.println("2.-TICKETS MANDALORIAN Y GROGU");
+        System.out.println("3.-TICKETS CONMEMORATIVOS UMAMUSUME");
+        System.out.println("4.-GANA MERCH DE UMAMUSUME");
+        System.out.println("5.-TICKETS ESPECIALES TXT");
+        System.out.println("6.-SORTEO MERCH TXT");
+        System.out.println("7.-SORTEO Y EXPERIENCIA GAMING");
+        System.out.println("8.-FIXTURES MANDALORIAN Y GROGU");
+        System.out.println("9.-CARDS COLECCIONABLES TOP GUN");
+        int opcion = sc.nextInt();
+        switch (opcion) {
+            case 1:
+                System.out.println("Eres cine,eres Entel...");
+                System.out.println("Vale hasta el 31/12/26 y/o hasta agotar stock para clientes Entel con líneas activas" +
+                        "(Entel prepago, postpago, hogar y corporativas móvil, BAM, BAFI)" +
+                        "• Stock mínimo a nivel nacional: 300,000 entradas." +
+                        "• Válido solo ingresando con su usuario Socio Cineplanet");
+                break;
+            case 2:
+                System.out.println("Llévate tickets conmemorativos.");
+                System.out.println("La dinámica aplica para la entrega de ticket coleccionable de The Mandalorian and Grogu a los primeros asistentes desde" +
+                        "la primera función del 21 de mayo o hasta agotar stock, según cada complejo.");
+                break;
+            case 3:
+                System.out.println("Llévate tickets conmemorativos de Umamusume Prety Derby.");
+                System.out.println("La dinámica aplica para la entrega de Tickets Conmemorativos a los primeros asistentes de la primera función de" +
+                        "estreno, o hasta agotar stock, según cada complejo.");
+                break;
+            case 4:
+                System.out.println("Llévate merch de Umamusume Prety Derby.");
+                System.out.println("Aplica para las compras realizadas en" +
+                        "preventa hasta el 13 de mayo como Socio Cineplanet para las películas" +
+                        "UMAMUSUME PRETTY DERBY.");
+                break;
+            case 5:
+                System.out.println("Llévate tickets especiales de TXT.");
+                System.out.println("La dinámica aplica para la entrega de Tickets Especiales a los primeros asistentes de la primera función de estreno, o" +
+                        "hasta agotar stock, según cada complejo.");
+                break;
+            case 6:
+                System.out.println("Participa pot una lightstick o un album.");
+                System.out.println("Aplica para las compras realizadas en preventa" +
+                        "desde el 5 al 23 de mayo como Socio Cineplanet para la película TXT MOA CON IN" +
+                        "JAPAN: LIVE VIEWING y que sigan a @cineplanetoficial y @kasooperu en" +
+                        "Instagram.");
+                break;
+            case 7:
+                System.out.println("Enterate como participar de una experiencia gaming.");
+                System.out.println("La dinámica aplica para los Socios Cineplanet que hayan realizado la compra de su “Combo Fanta Gaming” del 06 al 18 de" +
+                        "mayo. Promoción válida para mayores de 18 años.");
+                break;
+            case 8:
+                System.out.println("Llévate fixtures de la pelicula.");
+                System.out.println("“Entrega de Fixtures The Mandalorian and Grogu”, válido desde el jueves 21 de mayo en los complejos y" +
+                        "horarios indicados en el Anexo Oficial de Programación o hasta agotar stock, según cada complejo.");
+                break;
+            case 9:
+                System.out.println("Llévate cards coleccionables de Top Gun 40° aniversario.");
+                System.out.println("“Entrega de Card Coleccionable de Top Gun 40 aniversario”, válido desde el miércoles 13 de mayo en los" +
+                        "complejos y horarios indicados en el Anexo Oficial de Programación o hasta agotar stock, según cada complejo.");
+                break;
+            default:
+                System.out.println("Opción inválida");
+        }
+    }
 }
 login 
 invitado
