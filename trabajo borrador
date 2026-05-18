@@ -30,10 +30,10 @@ public class Cineplanet {
                     String username_in= sc.nextLine();
                     System.out.println("Ingrese su password");
                     password_in= sc.nextLine();
-                    validarInicio(password,password_in,username,username_in);
+                    validarInicio(password,password_in,username,username_in,sc);
                     break;
                 case 3:
-                    menuPrincipal();
+                    menuPrincipal(sc);
                     break;
                 case 4:
                     estado = false;
@@ -83,7 +83,7 @@ int opcion = sc.nextInt();
     public static void validarInicio (String password,String password_in,String username,String username_in){
         if(password.equals(password_in)&&username.equals(username_in)){
             System.out.println("Datos validados");
-            menuPrincipal();
+            menuPrincipal(sc);
         }
         else{
             System.out.println("Contraseña ingresada incorrecta.Vuelva a registrase");
