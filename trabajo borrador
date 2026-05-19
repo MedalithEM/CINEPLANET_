@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Cineplanet {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         boolean estado = true;
         int opcion;
         String username = "", password = "";
