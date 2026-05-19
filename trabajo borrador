@@ -57,6 +57,7 @@ public class Cineplanet {
                 }
                 if (!estructurapassOk) {
                     System.out.println("La contrasena debe tener minimo 8 caracteres y uno de estos caracteres especiales: @,#,$,%,&,*,!,?");
+                   break;
                 }
             }
             else {
