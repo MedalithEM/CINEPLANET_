@@ -5,11 +5,11 @@ public class Cineplanet {
         Scanner sc = new Scanner(System.in);
         boolean estado = true;
         int opcion;
-        String username="",password="";
-        System.out.println("Bienvenido a CINEPLANT");
+        String username = "", password = "";
+        System.out.println("Bienvenido a CINEPLANET");
         while (estado) {
             System.out.println("SELECCIONE:");
-            System.out.println("1.-Registarse");
+            System.out.println("1.-Registrarse");
             System.out.println("2.-Iniciar sesion");
             System.out.println("3.-Modo invitado");
             System.out.println("4.-Salir");
@@ -18,19 +18,19 @@ public class Cineplanet {
             switch (opcion) {
                 case 1:
                     System.out.println("Ingrese username(dni)");
-                    username= sc.nextLine();
+                    username = sc.nextLine();
                     System.out.println("Ingrese password");
-                    password= sc.nextLine();
-                    System.out.println("confirme su password");
-                    String password_in= sc.nextLine();
-                    validarPassword(password_in,password);
+                    password = sc.nextLine();
+                    System.out.println("Confirme su password");
+                    String password_in = sc.nextLine();
+                    validarPassword(password, password_in);
                     break;
                 case 2:
                     System.out.println("Ingrese su username");
-                    String username_in= sc.nextLine();
+                    String username_in = sc.nextLine();
                     System.out.println("Ingrese su password");
-                    password_in= sc.nextLine();
-                    validarInicio(password,password_in,username,username_in,sc);
+                    password_in = sc.nextLine();
+                    validarInicio(password, password_in, username, username_in, sc);
                     break;
                 case 3:
                     menuPrincipal(sc);
@@ -40,226 +40,238 @@ public class Cineplanet {
                     System.out.println("Saliendo de la pagina...");
                     break;
                 default:
+                    System.out.println("Opcion invalida");
             }
         }
     }
-    public static void menuPrincipal (Scanner sc){
-            System.out.println("----Menú principal----");
-            System.out.println("1.-Peliculas");
-            System.out.println("2.-Cines");
-            System.out.println("3.-Promociones");
-            System.out.println("4.-Socio");
-            System.out.println("4.-Dulcería");
-int opcion = sc.nextInt();
+
+    public static void menuPrincipal(Scanner sc) {
+        System.out.println("----Menú principal----");
+        System.out.println("1.-Peliculas");
+        System.out.println("2.-Cines");
+        System.out.println("3.-Promociones");
+        System.out.println("4.-Socio");
+        System.out.println("5.-Dulcería");
+        int opcion = sc.nextInt();
         switch (opcion) {
             case 1:
-                System.out.println("Peliculas Cineplanet  🎬📽️");
+                System.out.println("Peliculas Cineplanet 🎬📽️");
                 break;
             case 2:
                 System.out.println("Ubicacion de Cines 🛰️");
                 break;
             case 3:
-               Promociones(sc);
+                Promociones(sc);
                 break;
             case 4:
                 //SOCIO
                 System.out.println("ZONA SOCIO 👤");
-            System.out.println("Llegó SOCIO ++");
-            System.out.println("Descubre socio+");
-            System.out.println("Por ser Socio Cineplanet disfruta de promociones exclusivas en restaurantes, viajes, compras y mucho más");
-            System.out.println("Elige entre las siguientes opciones");
-            System.out.println("1 --> Explorar socio+");
-            System.out.println("2 --> Visitas");
-            System.out.println("3 --> Puntos");
-            System.out.println("4 --> Socio Clasica");
-            System.out.println("5 --> Socio Plata");
-            System.out.println("6 --> Socio Oro");
-            System.out.println("7 --> Socio Black");
-            System.out.println("8 --> SALIR");
-            opcion=scanner.nextInt();
-            switch (opcion){
-                case 1:
-                    //EXPLORAR SOCIO
-                    System.out.println("INGRESASTE A SOCIO+");
-                    System.out.println("Elige entre las siguientes opciones");
-                    System.out.println("1 --> TODOS");
-                    System.out.println("2 --> Moda y belleza");
-                    System.out.println("3 --> Alimentos");
-                    System.out.println("4 --> Productos Financieros ");
-                    System.out.println("5 --> Telecomunicaciones");
-                    opcion=sc.nextInt();
-                    switch (opcion){
-                        case 1:
-                            System.out.println("TODOS");
-                            System.out.println("15% de dscto. en toda la tienda");
-                            System.out.println("Hasta 25% OFF en maquillaje, skincare y fragancias");
-                            System.out.println("Combo Socio Cineplanet");
-                            System.out.println("19% de Dscto. en Promo Socio Popeyes");
-                            System.out.println("Combowok Socio Cineplanet");
-                            System.out.println("Combowok Socio Cineplanet para compartir");
-                            System.out.println("Papa John's Socio Cineplanet");
-                            System.out.println("Productos financieros");
-                            System.out.println("Renueva tu SOAT a un precio especial con Interseguro");
-                            System.out.println("CUY");
-                            System.out.println("25% de descuento en planes Cuy Móvil");
-                            break;
-                        case 2:
-                            System.out.println("Moda y belleza");
-                            System.out.println("Opcion 1: SIFRAH");
-                            System.out.println("Opcion 2: SENTUA");
-                            opcion=sc.nextInt();
-                            switch (opcion){
-                                case 1:
-                                    System.out.println("15% de dscto. en toda la tienda");
-                                    break;
-                                case 2:
-                                    System.out.println("Hasta 25% OFF en maquillaje, skincare y fragancias");
-                                    break;
-                                default:
-                                    System.out.println("Opcion no valida");
-                            }
-                            break;
-                        case 3:
-                            System.out.println("Alimentos");
-                            System.out.println("Opcion 1: BEMBOS");
-                            System.out.println("Opcion 2: POPEYES");
-                            System.out.println("Opcion 3: CHINAWOK");
-                            System.out.println("Opcion 4: PAPAJOHNS");
-                            opcion=sc.nextInt();
-                            switch (opcion){
-                                case 1:
-                                    System.out.println("Combo Socio Cineplanet");
-                                    break;
-                                case 2:
-                                    System.out.println("Combo Socio Cineplanet");
-                                    System.out.println("19% de Dscto. en Promo Socio Popeyes");
-                                    break;
-                                case 3:
-                                    System.out.println("Combowok Socio Cineplanet");
-                                    System.out.println("Combowok Socio Cineplanet para compartir");
-                                    break;
-                                case 4:
-                                    System.out.println("Papa John's Socio Cineplanet");
-                                    break;
-                                default:
-                                    System.out.println("Opcion no valida");
-                            }
-                            break;
-                        case 4:
-                            System.out.println("Productos financieros");
-                            System.out.println("Renueva tu SOAT a un precio especial con Interseguro");
-                            break;
-                        case 5:
-                            System.out.println("Telecomunicaciones");
-                            System.out.println("CUY");
-                            System.out.println("25% de descuento en planes Cuy Móvil");
-                            break;
-                        default:
-                            System.out.println("Opcion no valida");
+                System.out.println("Llegó SOCIO ++");
+                System.out.println("Descubre socio+");
+                System.out.println("Por ser Socio Cineplanet disfruta de promociones exclusivas en restaurantes, viajes, compras y mucho más");
+                System.out.println("Elige entre las siguientes opciones");
+                System.out.println("1 --> Explorar socio+");
+                System.out.println("2 --> Visitas");
+                System.out.println("3 --> Puntos");
+                System.out.println("4 --> Socio Clasica");
+                System.out.println("5 --> Socio Plata");
+                System.out.println("6 --> Socio Oro");
+                System.out.println("7 --> Socio Black");
+                System.out.println("8 --> SALIR");
+                opcion=sc.nextInt();
+                switch (opcion){
+                    case 1:
+                        //EXPLORAR SOCIO
+                        System.out.println("INGRESASTE A SOCIO+");
+                        System.out.println("Elige entre las siguientes opciones");
+                        System.out.println("1 --> TODOS");
+                        System.out.println("2 --> Moda y belleza");
+                        System.out.println("3 --> Alimentos");
+                        System.out.println("4 --> Productos Financieros ");
+                        System.out.println("5 --> Telecomunicaciones");
+                        opcion=sc.nextInt();
+                        switch (opcion){
+                            case 1:
+                                System.out.println("TODOS");
+                                System.out.println("15% de dscto. en toda la tienda");
+                                System.out.println("Hasta 25% OFF en maquillaje, skincare y fragancias");
+                                System.out.println("Combo Socio Cineplanet");
+                                System.out.println("19% de Dscto. en Promo Socio Popeyes");
+                                System.out.println("Combowok Socio Cineplanet");
+                                System.out.println("Combowok Socio Cineplanet para compartir");
+                                System.out.println("Papa John's Socio Cineplanet");
+                                System.out.println("Productos financieros");
+                                System.out.println("Renueva tu SOAT a un precio especial con Interseguro");
+                                System.out.println("CUY");
+                                System.out.println("25% de descuento en planes Cuy Móvil");
+                                break;
+                            case 2:
+                                System.out.println("Moda y belleza");
+                                System.out.println("Opcion 1: SIFRAH");
+                                System.out.println("Opcion 2: SENTUA");
+                                opcion=sc.nextInt();
+                                switch (opcion){
+                                    case 1:
+                                        System.out.println("15% de dscto. en toda la tienda");
+                                        break;
+                                    case 2:
+                                        System.out.println("Hasta 25% OFF en maquillaje, skincare y fragancias");
+                                        break;
+                                    default:
+                                        System.out.println("Opcion no valida");
+                                }
+                                break;
+                            case 3:
+                                System.out.println("Alimentos");
+                                System.out.println("Opcion 1: BEMBOS");
+                                System.out.println("Opcion 2: POPEYES");
+                                System.out.println("Opcion 3: CHINAWOK");
+                                System.out.println("Opcion 4: PAPAJOHNS");
+                                opcion=sc.nextInt();
+                                switch (opcion){
+                                    case 1:
+                                        System.out.println("Combo Socio Cineplanet");
+                                        break;
+                                    case 2:
+                                        System.out.println("Combo Socio Cineplanet");
+                                        System.out.println("19% de Dscto. en Promo Socio Popeyes");
+                                        break;
+                                    case 3:
+                                        System.out.println("Combowok Socio Cineplanet");
+                                        System.out.println("Combowok Socio Cineplanet para compartir");
+                                        break;
+                                    case 4:
+                                        System.out.println("Papa John's Socio Cineplanet");
+                                        break;
+                                    default:
+                                        System.out.println("Opcion no valida");
+                                }
+                                break;
+                            case 4:
+                                System.out.println("Productos financieros");
+                                System.out.println("Renueva tu SOAT a un precio especial con Interseguro");
+                                break;
+                            case 5:
+                                System.out.println("Telecomunicaciones");
+                                System.out.println("CUY");
+                                System.out.println("25% de descuento en planes Cuy Móvil");
+                                break;
+                            default:
+                                System.out.println("Opcion no valida");
 
-                    }
-                    break;
-                case 2:
-                    //VISITAS
+                        }
+                        break;
+                    case 2:
+                        //VISITAS
 
-                    System.out.println("Acumula visitas para pasar a la siguiente categoria y acceder a mis beneficios");
-                    System.out.println("Se podra acumular maximo 1 visita al día");
-                    System.out.println("Observa el siguiente ejemplo");
-                    System.out.println("HARRY ES SOCIO CINEPLANET CLÁSICO");
-                    System.out.println("Opcion 1: Cuando compras entradas para una función CLASICA --> 1+visita");
-                    System.out.println("Opcion 2: Cuando compras entradas para una función PRIME --> 2+visita");
-                    break;
-                case 3:
-                    //PUNTOS
-                    System.out.println("Acumula puntos para canjear entradas y combos a precios de descuento");
-                    System.out.println("Gana 1 punto por cada entrada comprada --> Entrada socio: +5puntos canjea una entrada 2D a un precio especial");
-                    System.out.println("Gana el 10% del monto gastado en Dulceria --> Combo Socio: +5puntos Canjea un combo a un precio especial");
-                    System.out.println("Ej. Si compro S/. 25, recibo 2.5puntos");
-                    break;
-                case 4:
-                    //SOCIO CLASICA
-                    System.out.println("Lunes y Miercoles a precio de Martes [2D]");
-                    System.out.println("Cartelera al correo electronico");
-                    System.out.println("Combo Socio a precio especial por cada 5 puntos --canjéalo de lunes a viernes--");
-                    System.out.println("Entrada Socio a precio especial por cada 5 puntos --canjéalo de lunes a viernes--");
-                    System.out.println("Regalo de cumpleaños 1 entrada 2D -- usalo hasta 3 dias despues de tu cumple");
+                        System.out.println("Acumula visitas para pasar a la siguiente categoria y acceder a mis beneficios");
+                        System.out.println("Se podra acumular maximo 1 visita al día");
+                        System.out.println("Observa el siguiente ejemplo");
+                        System.out.println("HARRY ES SOCIO CINEPLANET CLÁSICO");
+                        System.out.println("Opcion 1: Cuando compras entradas para una función CLASICA --> 1+visita");
+                        System.out.println("Opcion 2: Cuando compras entradas para una función PRIME --> 2+visita");
+                        break;
+                    case 3:
+                        //PUNTOS
+                        System.out.println("Acumula puntos para canjear entradas y combos a precios de descuento");
+                        System.out.println("Gana 1 punto por cada entrada comprada --> Entrada socio: +5puntos canjea una entrada 2D a un precio especial");
+                        System.out.println("Gana el 10% del monto gastado en Dulceria --> Combo Socio: +5puntos Canjea un combo a un precio especial");
+                        System.out.println("Ej. Si compro S/. 25, recibo 2.5puntos");
+                        break;
+                    case 4:
+                        //SOCIO CLASICA
+                        System.out.println("Lunes y Miercoles a precio de Martes [2D]");
+                        System.out.println("Cartelera al correo electronico");
+                        System.out.println("Combo Socio a precio especial por cada 5 puntos --canjéalo de lunes a viernes--");
+                        System.out.println("Entrada Socio a precio especial por cada 5 puntos --canjéalo de lunes a viernes--");
+                        System.out.println("Regalo de cumpleaños 1 entrada 2D -- usalo hasta 3 dias despues de tu cumple");
 
-                    break;
-                case 5:
-                    //SOCIO PLATA
-                    System.out.println("Lunes y Miercoles a precio de Martes [2D]");
-                    System.out.println("Cartelera al correo electronico");
-                    System.out.println("Combo Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
-                    System.out.println("Entrada Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
-                    System.out.println("Regalo de cumpleaños 2 entrada 2D + Combo Especial -- usalo hasta 6 dias despues de tu cumple");
-                    System.out.println("Combo Plata a precio especial--1 cancha grande + 1 bebida mediana 21Oz");
-                    break;
-                case 6:
-                    //SOCIO ORO
-                    System.out.println("Lunes y Miercoles a precio de Martes [2D]");
-                    System.out.println("Cartelera al correo electronico");
-                    System.out.println("Combo Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
-                    System.out.println("Entrada Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
-                    System.out.println("Regalo de cumpleaños 2 entrada 2D + Combo Especial -- usalo hasta 14 dias despues de tu cumple");
-                    System.out.println("Combo Oro Símple, Dúo o Trío");
-                    break;
-                case 7:
-                    //SOCIO BLACK
-                    System.out.println("Lunes y Miercoles a precio de Martes [2D] -- valido para 2D, 3D Y Prime");
-                    System.out.println("Cartelera al correo electronico");
-                    System.out.println("Combo Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
-                    System.out.println("Entrada Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
-                    System.out.println("Regalo de cumpleaños 2 entrada 2D + Combo Especial -- usalo hasta 30 dias despues de tu cumple");
-                    System.out.println("Combo Black -- Canjealo las veces que quieras");
-                    System.out.println("Entrada Black - Una entrada gratis al inicio del mes [valida por 1 mes]");
-                    System.out.println("Regalo de Bienvenida 2 Entradas 2D-- [Validas por 2 meses]");
-                    break;
-                case 8:
-                    //SALIR
-                    break;
-                default:
-                    System.out.println("Opcion no valida");
+                        break;
+                    case 5:
+                        //SOCIO PLATA
+                        System.out.println("Lunes y Miercoles a precio de Martes [2D]");
+                        System.out.println("Cartelera al correo electronico");
+                        System.out.println("Combo Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
+                        System.out.println("Entrada Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
+                        System.out.println("Regalo de cumpleaños 2 entrada 2D + Combo Especial -- usalo hasta 6 dias despues de tu cumple");
+                        System.out.println("Combo Plata a precio especial--1 cancha grande + 1 bebida mediana 21Oz");
+                        break;
+                    case 6:
+                        //SOCIO ORO
+                        System.out.println("Lunes y Miercoles a precio de Martes [2D]");
+                        System.out.println("Cartelera al correo electronico");
+                        System.out.println("Combo Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
+                        System.out.println("Entrada Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
+                        System.out.println("Regalo de cumpleaños 2 entrada 2D + Combo Especial -- usalo hasta 14 dias despues de tu cumple");
+                        System.out.println("Combo Oro Símple, Dúo o Trío");
+                        break;
+                    case 7:
+                        //SOCIO BLACK
+                        System.out.println("Lunes y Miercoles a precio de Martes [2D] -- valido para 2D, 3D Y Prime");
+                        System.out.println("Cartelera al correo electronico");
+                        System.out.println("Combo Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
+                        System.out.println("Entrada Socio a precio especial por cada 5 puntos --canjéalo de lunes a domingo--");
+                        System.out.println("Regalo de cumpleaños 2 entrada 2D + Combo Especial -- usalo hasta 30 dias despues de tu cumple");
+                        System.out.println("Combo Black -- Canjealo las veces que quieras");
+                        System.out.println("Entrada Black - Una entrada gratis al inicio del mes [valida por 1 mes]");
+                        System.out.println("Regalo de Bienvenida 2 Entradas 2D-- [Validas por 2 meses]");
+                        break;
+                    case 8:
+                        //SALIR
+                        break;
+                    default:
+                        System.out.println("Opcion no valida");
 
-            }
-        }
-    }
+                }
                 break;
             case 5:
                 System.out.println("Dulceria 🍿🥤");
+
                 break;
             default:
-                System.out.println("Opcion Invalida");
+                System.out.println("Opcion invalida");
         }
     }
-    public static void validarPassword(String password,String password_in){
-        if(password.equals(password_in)){
-               System.out.println("Contraseña validada");
-               System.out.println("Ahora puede INICIAR SESION...");
+
+    public static void validarPassword(String password, String password_in) {
+        if (password.equals(password_in)) {
+
+            System.out.println("Contraseña validada");
+
+            System.out.println("Ahora puede INICIAR SESION...");
         }
-        else{
-            System.out.println("Contraseña ingresada incorrecta.Vuelva a registrase");
+        else {
+
+            System.out.println("Contraseña incorrecta");
         }
     }
-    public static void validarInicio (String password,String password_in,String username,String username_in){
-        if(password.equals(password_in)&&username.equals(username_in)){
+
+    public static void validarInicio(String password,
+                                     String password_in,
+                                     String username,
+                                     String username_in,
+                                     Scanner sc) {
+        if (password.equals(password_in) &&
+                username.equals(username_in)) {
             System.out.println("Datos validados");
             menuPrincipal(sc);
         }
-        else{
-            System.out.println("Contraseña ingresada incorrecta.Vuelva a registrase");
+        else {
+            System.out.println("Datos incorrectos");
         }
     }
-  public static void Promociones(Scanner sc){
+
+    public static void Promociones(Scanner sc) {
         System.out.println("----Promociones Cineplanet----");
         System.out.println("1.-PROMOS 2x1 CON ENTEL");
         System.out.println("2.-TICKETS MANDALORIAN Y GROGU");
-        System.out.println("3.-TICKETS CONMEMORATIVOS UMAMUSUME");
-        System.out.println("4.-GANA MERCH DE UMAMUSUME");
-        System.out.println("5.-TICKETS ESPECIALES TXT");
-        System.out.println("6.-SORTEO MERCH TXT");
-        System.out.println("7.-SORTEO Y EXPERIENCIA GAMING");
-        System.out.println("8.-FIXTURES MANDALORIAN Y GROGU");
-        System.out.println("9.-CARDS COLECCIONABLES TOP GUN");
+        System.out.println("3.-TICKETS UMAMUSUME");
+        System.out.println("4.-MERCH UMAMUSUME");
+        System.out.println("5.-TICKETS TXT");
+        System.out.println("6.-SORTEO TXT");
+        System.out.println("7.-EXPERIENCIA GAMING");
+        System.out.println("8.-FIXTURES");
+        System.out.println("9.-CARDS TOP GUN");
         int opcion = sc.nextInt();
         switch (opcion) {
             case 1:
