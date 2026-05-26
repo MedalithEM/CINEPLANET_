@@ -292,40 +292,49 @@ public class Cineplanet {
         }
     }
 
-    public static void Promociones(Scanner sc) {
-        System.out.println("============== PROMOCIONES 😎 ==============");
-        System.out.println("1.- PROMOS 2x1 CON ENTEL");
-        System.out.println("2.- TICKETS MANDALORIAN Y GROGU");
-        System.out.println("3.- TICKETS TXT");
-        System.out.println("4.- EXPERIENCIA GAMING");
-        System.out.println("5.- CARDS TOP GUN");
-        int opcion = sc.nextInt();
-        switch (opcion) {
-
-            case 1:
-                System.out.println("Promo 2x1 con Entel válida hasta agotar stock");
-                break;
-
-            case 2:
-                System.out.println("Tickets conmemorativos de The Mandalorian and Grogu");
-                break;
-
-            case 3:
-                System.out.println("Tickets especiales de TXT");
-                break;
-
-            case 4:
-                System.out.println("Participa por una experiencia gaming");
-                break;
-
-            case 5:
-                System.out.println("Cards coleccionables de Top Gun");
-                break;
-
-            default:
-                System.out.println("Opción inválida");
+  public static void Promociones(Scanner sc) {
+            System.out.println("----Promociones Cineplanet----");
+            System.out.println("1.-PROMOS 2x1 CON ENTEL");
+            System.out.println("2.-TICKETS MANDALORIAN Y GROGU");
+            System.out.println("3.-TICKETS TXT");
+            System.out.println("4.-EXPERIENCIA GAMING");
+            System.out.println("5.-CARDS TOP GUN");
+            int opcion = sc.nextInt();
+            switch (opcion) {
+                case 1:
+                    System.out.println("Eres cine,eres Entel...");
+                    System.out.println("Vale hasta el 31/12/26 y/o hasta agotar stock para clientes Entel con líneas activas" +
+                            "(Entel prepago, postpago, hogar y corporativas móvil, BAM, BAFI)" +
+                            "• Stock mínimo a nivel nacional: 300,000 entradas." +
+                            "• Válido solo ingresando con su usuario Socio Cineplanet");
+                    break;
+                case 2:
+                    System.out.println("Llévate tickets conmemorativos.");
+                    System.out.println("La dinámica aplica para la entrega de ticket coleccionable de The Mandalorian and Grogu a los primeros asistentes desde" +
+                            "la primera función del 21 de mayo o hasta agotar stock, según cada complejo.");
+                    break;
+                
+                case 3:
+                    System.out.println("Llévate tickets especiales de TXT.");
+                    System.out.println("La dinámica aplica para la entrega de Tickets Especiales a los primeros asistentes de la primera función de estreno, o" +
+                            "hasta agotar stock, según cada complejo.");
+                    break;
+                
+                case 4:
+                    System.out.println("Enterate como participar de una experiencia gaming.");
+                    System.out.println("La dinámica aplica para los Socios Cineplanet que hayan realizado la compra de su “Combo Fanta Gaming” del 06 al 18 de" +
+                            "mayo. Promoción válida para mayores de 18 años.");
+                    break;
+               
+                case 5:
+                    System.out.println("Llévate cards coleccionables de Top Gun 40° aniversario.");
+                    System.out.println("“Entrega de Card Coleccionable de Top Gun 40 aniversario”, válido desde el miércoles 13 de mayo en los" +
+                            "complejos y horarios indicados en el Anexo Oficial de Programación o hasta agotar stock, según cada complejo.");
+                    break;
+                default:
+                    System.out.println("Opción inválida");
+            }
         }
-    }
     public static void Cines(Scanner sc) {
 
         System.out.println("========= CINES 🛰️ =========");
