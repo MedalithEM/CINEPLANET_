@@ -389,6 +389,7 @@ public class Cineplanet {
     }
     public static void peliculas(Scanner sc, String cineElegido, boolean socio) {
         cine = cineElegido;
+        System.out.println("Cine: "+cine);
         System.out.println("============== PELICULAS 🎬📽️ ==============");
         System.out.println("1.- En cartelera");
         System.out.println("2.- Preventa");
@@ -670,7 +671,9 @@ public class Cineplanet {
                     totalEntradas = totalEntradas - descuentoAplicado;
                     promocionAplicada = "40% Promo Amex 2025";
                     System.out.println("Promocion aplicada");
-                }
+                 } else {
+                    System.out.println("Promocion valida solo para socios");
+                 }
                 break;
             case 2:
                 System.out.println("Ingrese su codigo de descuento");
@@ -681,7 +684,9 @@ public class Cineplanet {
                     totalEntradas = totalEntradas - descuentoAplicado;
                     promocionAplicada = "Promocion Entel 2x1";
                     System.out.println("Promocion aplicada");
-                }
+                 } else {
+                    System.out.println("Promocion valida solo para socios");
+                 }
                 break;
             case 3:
                 if (esSocio) {
@@ -735,6 +740,7 @@ public class Cineplanet {
                 System.out.println("Sin promociones ni descuentos aplicados");
                 break;
             default:
+                System.out.println("Promocion no valida");
         }
         resumen();
     }
