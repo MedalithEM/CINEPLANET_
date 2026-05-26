@@ -636,19 +636,71 @@ public class Cineplanet {
             return;
         }
         totalEntradas = precioEntrada * cantidadEntradas;
-        beneficios(sc);
+        promocionesv(sc);
     }
-    public static void beneficios(Scanner sc) {
-        System.out.println("============= TUS BENEFICIOS =============");
-        System.out.println("Exclusivo con tu tarjeta American Express");
+    public static void promocionesv(Scanner sc) {
+
+        System.out.println("============= PROMOCIONES ACTUALES =============");
         System.out.println("1.- 50% Promo Amex 2025");
-        System.out.println("2.- Continuar sin promoción");
+        System.out.println("2.- Promocion Entel 2x1(solo en cantidad de boletas pares)");
+        System.out.println("3.- Descuento del 70% para socio plata");
+        System.out.println("4.- Descuento del 90% para socio black");
+        System.out.println("4.- Continuar sin promoción");
         int opcion = sc.nextInt();
-        if (opcion == 1) {
-            totalEntradas = totalEntradas / 2;
-            System.out.println("Promocion aplicada");
+        boolean esSocio = tipocliente.equalsIgnoreCase("socio");
+        switch (opcion){
+            case 1:
+                System.out.println("Ingrese su codigo de descuento");
+                double codigoD= sc.nextInt();
+                double codigov=45634567;
+                if (codigoD==codigov) {
+                    totalEntradas = totalEntradas / 2;
+                    System.out.println("Promocion aplicada");
+                }
+                break;
+            case 2:
+                System.out.println("Ingrese su codigo de descuento");
+                double codigoR= sc.nextInt();
+                double codigoL=45678234;
+                if (codigoR==codigoL) {
+                    totalEntradas = totalEntradas * 0.50;
+                    System.out.println("Promocion aplicada");
+                }
+                break;
+            case 3:
+                if (esSocio) {
+                    System.out.println("Ingrese su codigo de descuento");
+                    double codigoM = sc.nextInt();
+                    double codigoK = 7890789;
+                    if (codigoM == codigoK) {
+                        totalEntradas = totalEntradas * 0.70;
+                        System.out.println("Promocion aplicada");
+                    }
+                } else {
+                    System.out.println("Promocion valida solo para socios");
+                }
+
+                break;
+            case 4:
+                if (esSocio) {
+                    System.out.println("Ingrese su codigo de descuento");
+                    double codigoB = sc.nextInt();
+                    double codigoC = 89901212;
+                    if (codigoB == codigoC) {
+                        totalEntradas = totalEntradas * 0.90;
+                        System.out.println("Promocion aplicada");
+                    }
+                } else {
+                    System.out.println("Promocion valida solo para socios");
+                }
+
+                break;
+            case 5:
+                System.out.println("Sin promociones ni descuentos aplicados");
+                break;
+            default:
         }
-        resumen();
+       resumen();
     }
 
     public static void resumen() {
@@ -993,18 +1045,18 @@ public class Cineplanet {
         System.out.println("==============================================");
         limpiarCompra();
     }
-    public static void validaPagoTarjeta(Scanner escaner, double total) {
+    public static void validaPagoTarjeta(Scanner sc, double total) {
         String nroTarjeta, fechaVencimiento, cvv;
         boolean pAprobado = false;
         System.out.println("Monto total a pagar con tarjeta es: " + total);
         do {
             System.out.println("Ingrese los 16 digitos de la tarjeta");
-            escaner.nextLine();
-            nroTarjeta = escaner.nextLine();
+            sc.nextLine();
+            nroTarjeta = sc.nextLine();
             System.out.println("Ingrese la fecha de caducidad (MM/AA)");
-            fechaVencimiento = escaner.nextLine();
+            fechaVencimiento = sc.nextLine();
             System.out.println("Ingrese el codigo de seguridad CVV");
-            cvv = escaner.nextLine();
+            cvv = sc.nextLine();
             boolean tarjetaOk =
                     (nroTarjeta.length() == 16);
             boolean cvvOk =
