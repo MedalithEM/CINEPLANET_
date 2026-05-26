@@ -17,6 +17,8 @@ public class Cineplanet {
     static double precioEntrada = 0.0;
     static double totalEntradas = 0.0;
     static double totalDulceria = 0.0;
+    static String promocionAplicada = "Sin promocion";
+    static double descuentoAplicado = 0.0;
 
     public static void main(String[] args) {
 
@@ -293,48 +295,48 @@ public class Cineplanet {
     }
 
   public static void Promociones(Scanner sc) {
-            System.out.println("----Promociones Cineplanet----");
-            System.out.println("1.-PROMOS 2x1 CON ENTEL");
-            System.out.println("2.-TICKETS MANDALORIAN Y GROGU");
-            System.out.println("3.-TICKETS TXT");
-            System.out.println("4.-EXPERIENCIA GAMING");
-            System.out.println("5.-CARDS TOP GUN");
-            int opcion = sc.nextInt();
-            switch (opcion) {
-                case 1:
-                    System.out.println("Eres cine,eres Entel...");
-                    System.out.println("Vale hasta el 31/12/26 y/o hasta agotar stock para clientes Entel con líneas activas" +
-                            "(Entel prepago, postpago, hogar y corporativas móvil, BAM, BAFI)" +
-                            "• Stock mínimo a nivel nacional: 300,000 entradas." +
-                            "• Válido solo ingresando con su usuario Socio Cineplanet");
-                    break;
-                case 2:
-                    System.out.println("Llévate tickets conmemorativos.");
-                    System.out.println("La dinámica aplica para la entrega de ticket coleccionable de The Mandalorian and Grogu a los primeros asistentes desde" +
-                            "la primera función del 21 de mayo o hasta agotar stock, según cada complejo.");
-                    break;
-                
-                case 3:
-                    System.out.println("Llévate tickets especiales de TXT.");
-                    System.out.println("La dinámica aplica para la entrega de Tickets Especiales a los primeros asistentes de la primera función de estreno, o" +
-                            "hasta agotar stock, según cada complejo.");
-                    break;
-                
-                case 4:
-                    System.out.println("Enterate como participar de una experiencia gaming.");
-                    System.out.println("La dinámica aplica para los Socios Cineplanet que hayan realizado la compra de su “Combo Fanta Gaming” del 06 al 18 de" +
-                            "mayo. Promoción válida para mayores de 18 años.");
-                    break;
-               
-                case 5:
-                    System.out.println("Llévate cards coleccionables de Top Gun 40° aniversario.");
-                    System.out.println("“Entrega de Card Coleccionable de Top Gun 40 aniversario”, válido desde el miércoles 13 de mayo en los" +
-                            "complejos y horarios indicados en el Anexo Oficial de Programación o hasta agotar stock, según cada complejo.");
-                    break;
-                default:
-                    System.out.println("Opción inválida");
-            }
+        System.out.println("----Promociones Cineplanet----");
+        System.out.println("1.- 40% Promo Amex 2025");
+        System.out.println("2.- Promocion Entel 2x1(solo en cantidad de boletas pares)");
+        System.out.println("3.- Promocion del 70% para socio plata");
+        System.out.println("4.- Promocion del 90% para socio black");
+        System.out.println("5.- Promocion del 30% para socios de cineplanet");
+        int opcion = sc.nextInt();
+        switch (opcion) {
+            case 1:
+                System.out.println("Promocion excluxiva por comprar de 5 entradas a mas");
+                System.out.println("Vale hasta el 15/10/26 y/o hasta agotar stock"+
+                        "• Válido para cualquier usuario de Cineplanet");
+                break;
+            case 2:
+                System.out.println("Eres cine,eres Entel...");
+                System.out.println("Vale hasta el 31/12/26 y/o hasta agotar stock para clientes Entel con líneas activas" +
+                        "(Entel prepago, postpago, hogar y corporativas móvil, BAM, BAFI)" +
+                        "• Stock mínimo a nivel nacional: 300,000 entradas." +
+                        "• Válido solo ingresando con su usuario de ENTEL");
+                break;
+
+            case 3:
+                System.out.println("Promocion exlusiva para socio Plata");
+                System.out.println("La dinámica aplica para socio plata con mas de 16 vistas a 29 vistas anualmente" +
+                        "hasta agotar stock, según cada complejo.");
+                break;
+
+            case 4:
+                System.out.println("Promocion exlusiva para socio BLACK");
+                System.out.println("La dinámica aplica para socio plata con mas de 30 vistas a 50 vistas a mas anualmente" +
+                        "mayo. Promoción válida para mayores de 18 años.");
+                break;
+
+            case 5:
+                System.out.println("Promocion exlusiva para socio de cineplanet");
+                System.out.println("“La dinámica aplica para socios registrados en cineplanet" +
+                        "complejos y horarios indicados en el Anexo Oficial de Programación o hasta agotar stock, según cada complejo.");
+                break;
+            default:
+                System.out.println("Opción inválida");
         }
+    }
     public static void Cines(Scanner sc) {
 
         System.out.println("========= CINES 🛰️ =========");
@@ -645,16 +647,17 @@ public class Cineplanet {
             return;
         }
         totalEntradas = precioEntrada * cantidadEntradas;
-        promocionesv(sc);
+        descuentosP(sc);
     }
-    public static void promocionesv(Scanner sc) {
+     public static void descuentosP(Scanner sc) {
 
-        System.out.println("============= PROMOCIONES ACTUALES =============");
-        System.out.println("1.- 50% Promo Amex 2025");
+        System.out.println("============= DESCUENTOS ACTUALES =============");
+        System.out.println("1.- 40% Promo Amex 2025");
         System.out.println("2.- Promocion Entel 2x1(solo en cantidad de boletas pares)");
         System.out.println("3.- Descuento del 70% para socio plata");
         System.out.println("4.- Descuento del 90% para socio black");
-        System.out.println("5.- Continuar sin promoción");
+        System.out.println("5.- Descuento especial del 30% para socios");
+        System.out.println("6.- Continuar sin promoción");
         int opcion = sc.nextInt();
         boolean esSocio = tipocliente.equalsIgnoreCase("socio");
         switch (opcion){
@@ -663,7 +666,9 @@ public class Cineplanet {
                 double codigoD= sc.nextInt();
                 double codigov=45634567;
                 if (codigoD==codigov) {
-                    totalEntradas = totalEntradas / 2;
+                    descuentoAplicado = totalEntradas * 0.40;
+                    totalEntradas = totalEntradas - descuentoAplicado;
+                    promocionAplicada = "40% Promo Amex 2025";
                     System.out.println("Promocion aplicada");
                 }
                 break;
@@ -672,7 +677,9 @@ public class Cineplanet {
                 double codigoR= sc.nextInt();
                 double codigoL=45678234;
                 if (codigoR==codigoL) {
-                    totalEntradas = totalEntradas * 0.50;
+                    descuentoAplicado = totalEntradas * 0.50;
+                    totalEntradas = totalEntradas - descuentoAplicado;
+                    promocionAplicada = "Promocion Entel 2x1";
                     System.out.println("Promocion aplicada");
                 }
                 break;
@@ -682,7 +689,9 @@ public class Cineplanet {
                     double codigoM = sc.nextInt();
                     double codigoK = 7890789;
                     if (codigoM == codigoK) {
-                        totalEntradas = totalEntradas * 0.70;
+                        descuentoAplicado = totalEntradas * 0.70;
+                        totalEntradas = totalEntradas - descuentoAplicado;
+                        promocionAplicada = "Descuento Socio Plata";
                         System.out.println("Promocion aplicada");
                     }
                 } else {
@@ -696,7 +705,9 @@ public class Cineplanet {
                     double codigoB = sc.nextInt();
                     double codigoC = 89901212;
                     if (codigoB == codigoC) {
-                        totalEntradas = totalEntradas * 0.90;
+                        descuentoAplicado = totalEntradas * 0.90;
+                        totalEntradas = totalEntradas - descuentoAplicado;
+                        promocionAplicada = "Descuento Socio Black";
                         System.out.println("Promocion aplicada");
                     }
                 } else {
@@ -705,13 +716,28 @@ public class Cineplanet {
 
                 break;
             case 5:
+                if (esSocio) {
+                    System.out.println("Ingrese su codigo de descuento");
+                    double codigoy = sc.nextInt();
+                    double codigoz = 34545656;
+                    if (codigoy == codigoz) {
+                        descuentoAplicado = totalEntradas * 0.30;
+                        totalEntradas = totalEntradas - descuentoAplicado;
+                        promocionAplicada = "Descuento Especial Socio";
+                        System.out.println("Promocion aplicada");
+                    }
+                } else {
+                    System.out.println("Promocion valida solo para socios");
+                }
+
+                break;
+            case 6:
                 System.out.println("Sin promociones ni descuentos aplicados");
                 break;
             default:
         }
-       resumen();
+        resumen();
     }
-
     public static void resumen() {
         System.out.println("================== RESUMEN ==================");
         System.out.println("Película: " + pelicula);
@@ -1042,6 +1068,8 @@ public class Cineplanet {
         System.out.println("----------------------------------------------");
         System.out.println("Total entradas: S/ " + redondear(totalEntradas));
         System.out.println("Total dulceria: S/ " + redondear(totalDulceria));
+        System.out.println("Promocion aplicada: " + promocionAplicada);
+        System.out.println("Descuento aplicado: S/ " + redondear(descuentoAplicado));
         System.out.println("Subtotal: S/ " + redondear(subtotal));
         System.out.println("IGV: S/ " + redondear(igv));
         System.out.println("Total: S/ " + redondear(totalFinal));
