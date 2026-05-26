@@ -645,7 +645,7 @@ public class Cineplanet {
         System.out.println("2.- Promocion Entel 2x1(solo en cantidad de boletas pares)");
         System.out.println("3.- Descuento del 70% para socio plata");
         System.out.println("4.- Descuento del 90% para socio black");
-        System.out.println("4.- Continuar sin promoción");
+        System.out.println("5.- Continuar sin promoción");
         int opcion = sc.nextInt();
         boolean esSocio = tipocliente.equalsIgnoreCase("socio");
         switch (opcion){
