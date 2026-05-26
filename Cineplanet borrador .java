@@ -909,6 +909,7 @@ public class Cineplanet {
         }
         double totalp = precio * cantidad;
         System.out.println("Total a pagar en dulceria: S/ " + totalp);
+        System.out.println("Redirigase al menu anterior y emita su boleta.");
         return totalp;
     }
     public static void emitirBoleta(Scanner sc) {
@@ -998,6 +999,7 @@ public class Cineplanet {
         System.out.println("Monto total a pagar con tarjeta es: " + total);
         do {
             System.out.println("Ingrese los 16 digitos de la tarjeta");
+            escaner.nextLine();
             nroTarjeta = escaner.nextLine();
             System.out.println("Ingrese la fecha de caducidad (MM/AA)");
             fechaVencimiento = escaner.nextLine();
