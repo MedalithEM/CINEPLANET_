@@ -42,7 +42,9 @@ public class Cineplanet{
     static ArrayList<Double> precioDulceriaCAN = new ArrayList<>();
     static ArrayList<Double> precioDulceriaCOM = new ArrayList<>();
     static ArrayList<Double> precioDulceriaBE = new ArrayList<>();
-
+    static ArrayList<String> promociones = new ArrayList<>();
+    static ArrayList<Double> descuentos = new ArrayList<>();
+    static ArrayList<Integer> codigos = new ArrayList<>();
     static String cineElegido = "";
     static String categoriaElegida = "";
     static String peliculaElegida = "";
@@ -57,6 +59,8 @@ public class Cineplanet{
     static String promocionAplicada = "Sin promocion";
     static double descuentoAplicado = 0.0;
     static boolean esAdmin= false;
+    static Random oferta=new Random();
+    static int D= oferta.nextInt();
 
     public static void main(String[] args) {
 
@@ -202,6 +206,22 @@ public class Cineplanet{
 
         dulceriaBebidas.add("Bebida grande");
         precioDulceriaBE.add(12.00);
+
+        promociones.add("40% Promo Amex 2025");
+        descuentos.add(0.40);
+        codigos.add(45634567);
+        promociones.add("Promocion Entel 2x1");
+        descuentos.add(0.50);
+        codigos.add(45678234);
+        promociones.add("Descuento Socio Plata");
+        descuentos.add(0.70);
+        codigos.add(7890789);
+        promociones.add("Descuento Socio Black");
+        descuentos.add(0.90);
+        codigos.add(89901212);
+        promociones.add("Descuento Especial Socio");
+        descuentos.add(0.30);
+        codigos.add(34545656);
     }
     public static void registrarse() {
 
@@ -878,33 +898,28 @@ public class Cineplanet{
     }
     public static void aplicarPromocion() {
 
-        System.out.println("Seleccione promocion:");
-        System.out.println("1.- 40% Promo Amex");
-        System.out.println("2.- Entel 2x1");
-        System.out.println("3.- Sin promocion");
-
+        for(int i = 0; i < promociones.size(); i++){
+            System.out.println((i+1) + ".- " + promociones.get(i));
+        }
         int opcion = sc.nextInt();
 
-        switch (opcion) {
-            case 1:
-                descuentoAplicado = totalEntradas * 0.40;
-                totalEntradas = totalEntradas - descuentoAplicado;
-                promocionAplicada = "40% Promo Amex";
-                break;
-            case 2:
-                if (cantidadEntradas % 2 == 0) {
-                    descuentoAplicado = totalEntradas * 0.50;
-                    totalEntradas = totalEntradas - descuentoAplicado;
-                    promocionAplicada = "Entel 2x1";
-                } else {
-                    System.out.println("Promocion valida solo para cantidad par");
-                }
-                break;
-            case 3:
-                promocionAplicada = "Sin promocion";
-                break;
-            default:
-                System.out.println("Promocion invalida");
+        if(opcion >= 1 && opcion <= promociones.size()){
+
+            System.out.println("Ingrese su código:");
+            int codigoIngresado = sc.nextInt();
+
+            if(codigoIngresado == codigos.get(opcion-1)){
+
+                descuentoAplicado =
+                        totalEntradas * descuentos.get(opcion-1);
+
+                totalEntradas -= descuentoAplicado;
+
+                promocionAplicada =
+                        promociones.get(opcion-1);
+
+                System.out.println("Promoción aplicada");
+            }
         }
     }
     public static void comprarDulceria() {
@@ -966,9 +981,10 @@ public class Cineplanet{
                 break;
             case 2:
                 metodoPago = "Tarjeta";
-                System.out.println("Pago con tarjeta");
-                validaPagoTarjeta(sc,totalFinal);
+                pago = totalFinal;
+                vuelto = 0.0;
                 System.out.println("Pago con tarjeta aprobado");
+                validaPagoTarjeta(sc,totalFinal);
                 break;
             case 3:
                 metodoPago = "Yape / Plin";
