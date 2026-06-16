@@ -933,7 +933,9 @@ import java.util.Random;
                     System.out.println("Promoción aplicada");
                 }
             }
-            
+            else if (opcion==6){
+                System.out.println("Promocion no aplicada");
+            } 
         }
         public static void comprarDulceria() {
 
