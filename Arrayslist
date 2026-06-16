@@ -455,13 +455,16 @@ import java.util.Random;
             switch (tipo){
                 case 1:
                     mostrarListaConPrecio(peliculasCartelera,precioCarteleraInvitado);
-                    System.out.println("Ingrese la posicion a eliminar");
+                    System.out.println("Ingrese la posicion a modificar");
                     int pos= sc.nextInt();
                     if(pos>=0&&pos<peliculasCartelera.size()){
+                        System.out.println("Ingrese el nuevo nombre  de la pelicula");
                         peliculasCartelera.set(pos,sc.nextLine());
+                        System.out.println("Ingrese el nuevo precio invitado de la pelicula");
                         precioCarteleraInvitado.set(pos,sc.nextDouble());
+                        System.out.println("Ingrese el nuevo precio socio de la pelicula");
                         precioCarteleraSocio.set(pos,sc.nextDouble());
-                        System.out.println("Menu eliminado");
+                        System.out.println("Pelicula modificada");
                     }
                     else{
                         System.out.println("Posicion invalida");
@@ -469,13 +472,16 @@ import java.util.Random;
                     break;
                 case 2:
                     mostrarListaConPrecio(peliculasPreventa,precioPreventaInvitado);
-                    System.out.println("Ingrese la posicion a eliminar");
+                    System.out.println("Ingrese la posicion a modificar");
                     pos= sc.nextInt();
                     if(pos>=0&&pos<peliculasPreventa.size()){
+                        System.out.println("Ingrese el nuevo nombre  de la pelicula");
                         peliculasPreventa.set(pos,sc.nextLine());
+                        System.out.println("Ingrese el nuevo precio invitado de la pelicula");
                         precioPreventaInvitado.set(pos,sc.nextDouble());
+                        System.out.println("Ingrese el nuevo precio socio de la pelicula");
                         precioPreventaSocio.set(pos,sc.nextDouble());
-                        System.out.println("Extra eliminado");
+                        System.out.println(" Posicion invalida");
                     }
                     else{
                         System.out.println("Posicion invalida");
@@ -483,13 +489,16 @@ import java.util.Random;
                     break;
                 case 3:
                     mostrarListaConPrecio(peliculasEstreno,precioEstrenoInvitado);
-                    System.out.println("Ingrese la posicion a eliminar");
+                    System.out.println("Ingrese la posicion a modificar");
                     pos= sc.nextInt();
                     if(pos>=0&&pos<peliculasEstreno.size()){
+                        System.out.println("Ingrese el nuevo nombre  de la pelicula");
                         peliculasEstreno.set(pos,sc.nextLine());
+                        System.out.println("Ingrese el nuevo precio invitado de la pelicula");
                         precioEstrenoInvitado.set(pos,sc.nextDouble());
+                        System.out.println("Ingrese el nuevo precio socio de la pelicula");
                         precioEstrenoSocio.set(pos,sc.nextDouble());
-                        System.out.println("Bebida eliminada");
+                        System.out.println("Posicion invalida");
                     }
                     else{
                         System.out.println("Posicion invalida");
@@ -515,7 +524,7 @@ import java.util.Random;
                         peliculasCartelera.remove(pos);
                         precioCarteleraInvitado.remove(pos);
                         precioCarteleraSocio.remove(pos);
-                        System.out.println("Menu eliminado");
+                        System.out.println("pelicula eliminado");
                     }
                     else{
                         System.out.println("Posicion invalida");
@@ -529,7 +538,7 @@ import java.util.Random;
                         peliculasPreventa.remove(pos);
                         precioPreventaInvitado.remove(pos);
                         precioPreventaSocio.remove(pos);
-                        System.out.println("Extra eliminado");
+                        System.out.println("pelicula eliminado");
                     }
                     else{
                         System.out.println("Posicion invalida");
@@ -543,7 +552,7 @@ import java.util.Random;
                         peliculasEstreno.remove(pos);
                         precioEstrenoInvitado.remove(pos);
                         precioEstrenoSocio.remove(pos);
-                        System.out.println("Bebida eliminada");
+                        System.out.println("pelicula eliminada");
                     }
                     else{
                         System.out.println("Posicion invalida");
@@ -564,13 +573,13 @@ import java.util.Random;
                 System.out.println("Resultado: "+buscar+" Si existe en el sistema");
             }
             if(enMenu){
-                System.out.println("Tipo menu del dia: indice "+peliculasCartelera.indexOf(buscar)+" S/. "+precioCarteleraInvitado.get(peliculasCartelera.indexOf(buscar)));
+                System.out.println("Tipo pelicula del dia: indice "+peliculasCartelera.indexOf(buscar)+" S/. "+precioCarteleraInvitado.get(peliculasCartelera.indexOf(buscar)));
             }
             if(enExtra){
-                System.out.println("Tipo menu del dia: indice "+peliculasPreventa.indexOf(buscar)+" S/. "+precioPreventaInvitado.get(peliculasPreventa.indexOf(buscar)));
+                System.out.println("Tipo pelicula del dia: indice "+peliculasPreventa.indexOf(buscar)+" S/. "+precioPreventaInvitado.get(peliculasPreventa.indexOf(buscar)));
             }
             if(enBebida){
-                System.out.println("Tipo menu del dia: indice "+peliculasEstreno.indexOf(buscar)+ "S/. "+precioEstrenoInvitado.get(peliculasEstreno.indexOf(buscar)));
+                System.out.println("Tipo pelicula del dia: indice "+peliculasEstreno.indexOf(buscar)+ "S/. "+precioEstrenoInvitado.get(peliculasEstreno.indexOf(buscar)));
             }
         }
         public static void menuPrincipal() {
@@ -904,14 +913,11 @@ import java.util.Random;
             }
         }
         public static void aplicarPromocion() {
-
             for(int i = 0; i < promociones.size(); i++){
                 System.out.println((i+1) + ".- " + promociones.get(i));
             }
             int opcion = sc.nextInt();
-
             if(opcion >= 1 && opcion <= promociones.size()){
-
                 System.out.println("Ingrese su código:");
                 int codigoIngresado = sc.nextInt();
 
@@ -924,10 +930,10 @@ import java.util.Random;
 
                     promocionAplicada =
                             promociones.get(opcion-1);
-
                     System.out.println("Promoción aplicada");
                 }
             }
+            
         }
         public static void comprarDulceria() {
 
@@ -1327,4 +1333,6 @@ import java.util.Random;
             } while (!pAprobado);
         }
     }
+
+ }
 
