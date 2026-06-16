@@ -193,20 +193,54 @@ import java.util.Random;
             precioEstrenoSocio.add(10.00);
             precioEstrenoInvitado.add(13.50);
 
-            dulceriaCombouno.add("Combo 1: Canchita grande + bebida");
+            dulceriaPdulceras.add("COMBO DOS + 2 M&M");
+            precioDulceriaPD.add(46.00);
+            dulceriaPdulceras.add("COMBO UNO + M&M");
+            precioDulceriaPD.add(24.00);
+            dulceriaPdulceras.add("COMBO 2 + 2 SUBLIME POPS");
+            precioDulceriaPD.add(47.00);
+            dulceriaPdulceras.add("COMBO 1 + SUBLIME POPS");
+            precioDulceriaPD.add(26.00);
+            dulceriaPpeliculas.add("COMBO 2 + VASO MANDALORIAN");
+            precioDulceriaPP.add(87.00);
+            dulceriaPpeliculas.add("COMBO 2 + PALOMERO GROGU");
+            precioDulceriaPP.add(163.00);
+            dulceriaCombouno.add("Combo 1: Canchita Grande + 1 Bebida");
             precioDulceriaCU.add(20.50);
-
-            dulceriaCombocompartir.add("Combo 2: Canchita gigante + 2 bebidas");
+            dulceriaCombouno.add("Combo Hot Dog: 1 Hot Dog + 1 Bebida");
+            precioDulceriaCU.add(19.00);
+            dulceriaCombocompartir.add("Combo 2: Canchita Gigante + 2 Bebidas");
             precioDulceriaCC.add(33.00);
-
+            dulceriaCombocompartir.add("Combo Familiar: Canchita Gigante + 4 Bebidas");
+            precioDulceriaCC.add(163.00);
+            dulceriaCombocompartir.add("Com.2 Dob.Gig.: 2 Canchitas Gigantes + 2 Bebidas");
+            precioDulceriaCC.add(40.00);
+            dulceriaCombocompartir.add("Combo de Pelicula: Canchita Grande + 2 Bebidas");
+            precioDulceriaCC.add(20.50);
+            dulceriaCanchitas.add("Canchita Mediana");
+            precioDulceriaCAN.add(13.00);
+            dulceriaCanchitas.add("Canchita Grande");
+            precioDulceriaCAN.add(15.00);
+            dulceriaCanchitas.add("Canchita Gigante");
+            precioDulceriaCAN.add(21.50);
+            dulceriaComplementos.add("SUBLIME POPS");
+            precioDulceriaCOM.add(10.00);
             dulceriaComplementos.add("Hot Dog Jumbo");
             precioDulceriaCOM.add(13.50);
-
-            dulceriaComplementos.add("Nachos con queso cheddar");
+            dulceriaComplementos.add("Nachos con Queso Cheddar");
             precioDulceriaCOM.add(13.50);
-
-            dulceriaBebidas.add("Bebida grande");
+            dulceriaComplementos.add("KIT KAT WHITE");
+            precioDulceriaCOM.add(9.00);
+            dulceriaComplementos.add("KIT KAT 4 FINGERS MILK");
+            precioDulceriaCOM.add(9.00);
+            dulceriaComplementos.add("Queso Adicional 1.5 OZ");
+            precioDulceriaCOM.add(4.50);
+            dulceriaBebidas.add("CC Bebida Mediana");
+            precioDulceriaBE.add(10.50);
+            dulceriaBebidas.add("CC Bebida Grande");
             precioDulceriaBE.add(12.00);
+            dulceriaBebidas.add("Agua San Luis sin gas");
+            precioDulceriaBE.add(4.00);
 
             promociones.add("40% Promo Amex 2025");
             descuentos.add(0.40);
@@ -1226,31 +1260,42 @@ import java.util.Random;
             double subtotal = totalFinal / 1.18;
             double igv = totalFinal - subtotal;
 
-            System.out.println();
-            System.out.println("=====================================");
-            System.out.println("          BOLETA CINEPLANET");
-            System.out.println("=====================================");
-            System.out.println("Cliente: " + tipoCliente);
-            System.out.println("Cine: " + cineElegido);
-            System.out.println("Categoria: " + categoriaElegida);
-            System.out.println("Pelicula: " + peliculaElegida);
-            System.out.println("Formato: " + formatoElegido);
-            System.out.println("Horario: " + horarioElegido);
-            System.out.println("Sala: " + salaElegida);
-            System.out.println("Tipo entrada: " + entradaElegida);
-            System.out.println("Cantidad entradas: " + cantidadEntradas);
-            System.out.println("Total entradas: S/" + redondear(totalEntradas));
-            System.out.println("Total dulceria: S/" + redondear(totalDulceria));
-            System.out.println("Promocion: " + promocionAplicada);
-            System.out.println("Descuento: S/" + redondear(descuentoAplicado));
-            System.out.println("Subtotal: S/" + redondear(subtotal));
-            System.out.println("IGV: S/" + redondear(igv));
-            System.out.println("Total: S/" + redondear(totalFinal));
-            System.out.println("Metodo pago: " + metodoPago);
-            System.out.println("Pago recibido: S/" + redondear(pago));
-            System.out.println("Vuelto: S/" + redondear(vuelto));
-            System.out.println("=====================================");
+            try (FileWriter escritor = new FileWriter("D:\\Cineplanet.txt")) {
+
+            escritor.write("=====================================\n");
+            escritor.write("          BOLETA CINEPLANET\n");
+            escritor.write("=====================================\n");
+            escritor.write("Cliente: " + tipoCliente + "\n");
+            escritor.write("Cine: " + cineElegido + "\n");
+            escritor.write("Categoria: " + categoriaElegida + "\n");
+            escritor.write("Pelicula: " + peliculaElegida + "\n");
+            escritor.write("Formato: " + formatoElegido + "\n");
+            escritor.write("Horario: " + horarioElegido + "\n");
+            escritor.write("Sala: " + salaElegida + "\n");
+            escritor.write("Tipo entrada: " + entradaElegida + "\n");
+            escritor.write("Cantidad entradas: " + cantidadEntradas + "\n");
+            escritor.write("-------------------------------------\n");
+            escritor.write("Total entradas: S/" + redondear(totalEntradas) + "\n");
+            escritor.write("Total dulceria: S/" + redondear(totalDulceria) + "\n");
+            escritor.write("Promocion: " + promocionAplicada + "\n");
+            escritor.write("Descuento: S/" + redondear(descuentoAplicado) + "\n");
+            escritor.write("Subtotal: S/" + redondear(subtotal) + "\n");
+            escritor.write("IGV: S/" + redondear(igv) + "\n");
+            escritor.write("TOTAL: S/" + redondear(totalFinal) + "\n");
+            escritor.write("-------------------------------------\n");
+            escritor.write("Metodo pago: " + metodoPago + "\n");
+            escritor.write("Pago recibido: S/" + redondear(pago) + "\n");
+            escritor.write("Vuelto: S/" + redondear(vuelto) + "\n");
+            escritor.write("=====================================\n");
+            escritor.write("   Gracias por su compra\n");
+            escritor.write("=====================================\n");
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        System.out.println("El archivo se exportó correctamente en: D:\\Cineplanet.txt");
+    }
         public static int seleccionarDeLista(ArrayList<String> lista) {
 
             for (int i = 0; i < lista.size(); i++) {
