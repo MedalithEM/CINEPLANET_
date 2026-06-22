@@ -1665,7 +1665,7 @@ public class Cineplanet {
                 visitas.add("Observa el siguiente ejemplo");
                 visitas.add("HARRY ES SOCIO CINEPLANET CLÁSICO");
                 visitas.add("Cuando compras entradas para una función CLÁSICA --> +1 visita");
-                visitas.add("Cuando compras entradas para una función PRIME --> +2 visitas");
+                visitas.add("Cuando compras entradas para una función PRIME --> +2 visita");
 
                 for (String dato : visitas) {
                     System.out.println(dato);
