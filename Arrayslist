@@ -9,8 +9,11 @@ import java.io.IOException;
 public class Cineplanet {
     static Scanner sc = new Scanner(System.in);
 
-    static String correo = "";
-    static String pass = "";
+  
+    static String correoRegistrado="";
+    static String contraseñaRegistrada="";
+    static boolean cuentacreada= false;
+    static boolean sesioniniciada= false;
     static String tipoCliente = "Invitado";
 
     static ArrayList<String> ciudades = new ArrayList<>();
@@ -309,7 +312,7 @@ public class Cineplanet {
                     }
                     break;
                 case 1:
-                    registrarse();
+                    Registrarse();
                     break;
                 case 2:
                     iniciarSesion();
@@ -834,66 +837,104 @@ public class Cineplanet {
 
     }
 
-    public static void registrarse() {
+    public static void Registrarse() {
+        System.out.println();
+        System.out.println("============== REGISTRO ==============");
+        System.out.println("Requisitos del correo:");
+        System.out.println("- Debe contener @");
+        System.out.println("- Debe terminar en .com");
 
-        boolean correcto = false;
+        System.out.println();
+        System.out.println("Requisitos de contraseña:");
+        System.out.println("- Minimo 8 caracteres");
+        System.out.println("- Debe tener al menos un caracter especial");
+        System.out.println("- Caracteres permitidos: @ # $ % & * ! ?");
 
-        while (!correcto) {
+        do {
             System.out.print("Ingrese correo: ");
-            correo = sc.nextLine();
+            correoRegistrado = sc.nextLine();
+            System.out.print("Ingrese password: ");
+            contraseñaRegistrada = sc.nextLine();
 
-            System.out.print("Ingrese contraseña: ");
-            pass = sc.nextLine();
+            boolean correoOK = correoRegistrado.contains("@") && correoRegistrado.endsWith(".com");
 
-            boolean correoOK = correo.contains("@") && correo.endsWith(".com");
-            boolean passOK = pass.length() >= 8;
+            boolean passOK = contraseñaRegistrada.length() >= 8 &&
+                    (contraseñaRegistrada.contains("@") || contraseñaRegistrada.contains("#") || contraseñaRegistrada.contains("$") ||contraseñaRegistrada.contains("%") || contraseñaRegistrada.contains("&") || contraseñaRegistrada.contains("*") ||
+                            contraseñaRegistrada.contains("!") || contraseñaRegistrada.contains("?"));
 
-            if (correoOK && passOK) {
-                correcto = true;
-                System.out.println("Registro correcto");
+            if (!correoOK || !passOK) {
+
+                System.out.println("Error: los datos no cumplen los requisitos");
+
+                if (!correoOK) {
+                    System.out.println("Corrija el correo. Debe contener @ y terminar en .com");
+                }
+
+                if (!passOK) {
+                    System.out.println("Corrija la contraseña o agregue caracteres especiales");
+                }
+
             } else {
-                System.out.println("Correo o contraseña invalida");
+                cuentacreada = true;
             }
-        }
+
+        } while (!cuentacreada);
+
+        System.out.print("Ingrese su password nuevamente: ");
+        String pass_in = sc.nextLine();
+
+        validarPassword(pass_in);
+        System.out.println("Se ha registrado correctamente");
+        System.out.println("Ahora puede iniciar sesion");
+    }
+    public static void validarPassword(String passin) {
+
+        boolean valido = false;
+
+        do {
+            if (contraseñaRegistrada.equals(passin)) {
+                valido = true;
+            } else {
+                System.out.println("Contraseña incorrecta");
+                System.out.println("Ingresela nuevamente");
+                passin = sc.nextLine();
+            }
+
+        } while (!valido);
+
+        System.out.println("Contraseña validada");
     }
 
     public static void iniciarSesion() {
 
-        if (correo.equals("") || pass.equals("")) {
-            System.out.println("Primero debe registrarse");
-            return;
-        }
-
         int intentos = 0;
-        boolean acceso = false;
+        while (intentos < 3 && !sesioniniciada) {
 
-        while (intentos < 3 && !acceso) {
+            System.out.println("\n============== INICIAR SESIÓN ==============");
 
-            System.out.print("Correo: ");
+            System.out.print("Ingrese su correo: ");
             String correoIngresado = sc.nextLine();
 
-            System.out.print("Contraseña: ");
-            String passIngresado = sc.nextLine();
-
-            if (correoIngresado.equals("admin") && passIngresado.equals("123456")) {
+            System.out.print("Ingrese su contraseña: ");
+            String contraseñaIngresada = sc.nextLine();
+            if (correoIngresado.equals("admin") && contraseñaIngresada.equals("123456")) {
                 System.out.println("Bienvenido ADMIN");
                 esAdmin = true;
-                acceso = true;
+                sesioniniciada = true;
+                return;
             }
-            if (correoIngresado.equals(correo) && passIngresado.equals(pass)) {
-                acceso = true;
-                tipoCliente = "Socio";
-                System.out.println("Inicio de sesion correcto");
+            if (correoRegistrado.equals(correoIngresado) &&
+                    contraseñaRegistrada.equals(contraseñaIngresada)) {
+                System.out.println("Datos validados");
+                sesioniniciada = true;
                 menuPrincipal();
             } else {
                 intentos++;
-                System.out.println("Datos incorrectos. Intento " + intentos + " de 3");
+                System.out.println("Datos incorrectos");
+                System.out.println("Intentos usados: " + intentos + " de 3");
             }
         }
-
-        if (!acceso) {
-            System.out.println("Cuenta bloqueada");
-        }
+        System.out.println("Cuenta bloqueada por exceder los 3 intentos");
     }
 
     public static void menuPrincipal() {
@@ -941,182 +982,6 @@ public class Cineplanet {
                 default:
                     System.out.println("Opcion invalida");
             }
-        }
-    }
-
-    public static void comprarPelicula() {
-        if(cineElegido.equals("")) {
-            Cines();
-            if(cineElegido.equals("")){
-                return;
-            }
-        }
-        System.out.println("Seleccione categoria:");
-        int opcionCategoria = seleccionarDeLista(categorias);
-        if (opcionCategoria == -1) return;
-        categoriaElegida = categorias.get(opcionCategoria);
-
-        if (opcionCategoria == 0) {
-            seleccionarPelicula(peliculasCartelera, precioCarteleraSocio, precioCarteleraInvitado);
-        } else if (opcionCategoria == 1) {
-            seleccionarPelicula(peliculasPreventa, precioPreventaSocio, precioPreventaInvitado);
-        } else {
-            seleccionarPelicula(peliculasEstreno, precioEstrenoSocio, precioEstrenoInvitado);
-        }
-
-        if (peliculaElegida.equals("")) return;
-
-        System.out.println("Seleccione formato:");
-        int opcionFormato = seleccionarDeLista(formatos);
-        if (opcionFormato == -1) return;
-        formatoElegido = formatos.get(opcionFormato);
-        precioEntrada = precioEntrada + precioExtraFormato.get(opcionFormato);
-
-        System.out.println("Seleccione horario:");
-        int opcionHorario = seleccionarDeLista(horarios);
-        if (opcionHorario == -1) return;
-        horarioElegido = horarios.get(opcionHorario);
-
-        System.out.println("Seleccione sala:");
-        int opcionSala = seleccionarDeLista(salas);
-        if (opcionSala == -1) return;
-        salaElegida = salas.get(opcionSala);
-
-        System.out.println("Seleccione tipo de entrada:");
-        int opcionEntrada = seleccionarDeLista(tiposEntrada);
-        if (opcionEntrada == -1) return;
-        entradaElegida = tiposEntrada.get(opcionEntrada);
-
-        if (tiposEntrada.get(opcionEntrada).equals("Conadis")) {
-            precioEntrada = 12.50;
-        } else {
-            precioEntrada = precioEntrada - descuentoEntrada.get(opcionEntrada);
-        }
-
-        System.out.print("Ingrese cantidad de entradas: ");
-        cantidadEntradas = sc.nextInt();
-
-        if (cantidadEntradas <= 0) {
-            System.out.println("Cantidad invalida");
-            return;
-        }
-        totalEntradas = precioEntrada * cantidadEntradas;
-        aplicarPromocion();
-        System.out.println("Compra de entradas agregada");
-        resumenPeliculas();
-    }
-    public static void seleccionarPelicula(ArrayList<String> peliculas, ArrayList<Double> preciosSocio, ArrayList<Double> preciosInvitado) {
-
-        for (int i = 0; i < peliculas.size(); i++) {
-            if (tipoCliente.equals("Socio")) {
-                System.out.println((i + 1) + ".- " + peliculas.get(i) + " S/" + preciosSocio.get(i));
-            } else {
-                System.out.println((i + 1) + ".- " + peliculas.get(i) + " S/" + preciosInvitado.get(i));
-            }
-        }
-
-        System.out.print("Opcion: ");
-        int opcion = sc.nextInt();
-
-        if (opcion < 1 || opcion > peliculas.size()) {
-            System.out.println("Pelicula invalida");
-            return;
-        }
-
-        peliculaElegida = peliculas.get(opcion - 1);
-
-        if (tipoCliente.equals("Socio")) {
-            precioEntrada = preciosSocio.get(opcion - 1);
-        } else {
-            precioEntrada = preciosInvitado.get(opcion - 1);
-        }
-    }
-    public static void resumenPeliculas() {
-        System.out.println("================== RESUMEN ==================");
-        System.out.println("Película: " +peliculaElegida );
-        System.out.println("Formato: " + formatoElegido);
-        System.out.println("Cine: " + cineElegido);
-        System.out.println("Entrada: " + entradaElegida);
-        System.out.println("Cantidad: " + cantidadEntradas);
-        System.out.println("Descuento: "+descuentoEntrada);
-        System.out.println("Total: S/" + totalEntradas);
-        System.out.println("Gracias por comprar en CINEPLANET");
-    }
-
-    public static void Cines(){
-
-        System.out.println("TODAS LAS CIUDADES");
-
-        for(int i=0;i<ciudades.size();i++){
-            System.out.println((i+1)+".- "+ciudades.get(i));
-        }
-
-        System.out.println("----------------------------");
-        System.out.println("========= CINES =========");
-        System.out.println("14.- Salir");
-        int ciudad=sc.nextInt();
-
-        switch(ciudad){
-
-            case 1:
-                mostrarCines(lima);
-                break;
-
-            case 2:
-                mostrarCines(arequipa);
-                break;
-
-            case 3:
-                mostrarCines(cajamarca);
-                break;
-
-            case 4:
-                mostrarCines(chiclayo);
-                break;
-
-            case 5:
-                mostrarCines(cusco);
-                break;
-
-            case 6:
-                mostrarCines(huancayo);
-                break;
-
-            case 7:
-                mostrarCines(huanuco);
-                break;
-
-            case 8:
-                mostrarCines(juliaca);
-                break;
-
-            case 9:
-                mostrarCines(piura);
-                break;
-
-            case 10:
-                mostrarCines(pucallpa);
-                break;
-
-            case 11:
-                mostrarCines(puno);
-                break;
-
-            case 12:
-                mostrarCines(tacna);
-                break;
-
-            case 13:
-                mostrarCines(trujillo);
-                break;
-
-            case 14:
-                System.out.println("Saliendo...");
-                return;
-
-
-            default:
-                System.out.println("Opción inválida");
         }
     }
     public static void mostrarCines(ArrayList<String> listaCines) {
