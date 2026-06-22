@@ -1262,40 +1262,63 @@ import java.util.Random;
 
             try (FileWriter escritor = new FileWriter("D:\\Cineplanet.txt")) {
 
-            escritor.write("=====================================\n");
-            escritor.write("          BOLETA CINEPLANET\n");
-            escritor.write("=====================================\n");
-            escritor.write("Cliente: " + tipoCliente + "\n");
-            escritor.write("Cine: " + cineElegido + "\n");
-            escritor.write("Categoria: " + categoriaElegida + "\n");
-            escritor.write("Pelicula: " + peliculaElegida + "\n");
-            escritor.write("Formato: " + formatoElegido + "\n");
-            escritor.write("Horario: " + horarioElegido + "\n");
-            escritor.write("Sala: " + salaElegida + "\n");
-            escritor.write("Tipo entrada: " + entradaElegida + "\n");
-            escritor.write("Cantidad entradas: " + cantidadEntradas + "\n");
-            escritor.write("-------------------------------------\n");
-            escritor.write("Total entradas: S/" + redondear(totalEntradas) + "\n");
-            escritor.write("Total dulceria: S/" + redondear(totalDulceria) + "\n");
-            escritor.write("Promocion: " + promocionAplicada + "\n");
-            escritor.write("Descuento: S/" + redondear(descuentoAplicado) + "\n");
-            escritor.write("Subtotal: S/" + redondear(subtotal) + "\n");
-            escritor.write("IGV: S/" + redondear(igv) + "\n");
-            escritor.write("TOTAL: S/" + redondear(totalFinal) + "\n");
-            escritor.write("-------------------------------------\n");
-            escritor.write("Metodo pago: " + metodoPago + "\n");
-            escritor.write("Pago recibido: S/" + redondear(pago) + "\n");
-            escritor.write("Vuelto: S/" + redondear(vuelto) + "\n");
-            escritor.write("=====================================\n");
-            escritor.write("   Gracias por su compra\n");
-            escritor.write("=====================================\n");
+    escritor.write("=====================================\n");
+    escritor.write(String.format("%25s%n", "BOLETA CINEPLANET"));
+    escritor.write("=====================================\n");
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    escritor.write(String.format("%-20s %s%n", "Cliente:", tipoCliente));
+    escritor.write(String.format("%-20s %s%n", "Cine:", cineElegido));
+    escritor.write(String.format("%-20s %s%n", "Categoria:", categoriaElegida));
+    escritor.write(String.format("%-20s %s%n", "Pelicula:", peliculaElegida));
+    escritor.write(String.format("%-20s %s%n", "Formato:", formatoElegido));
+    escritor.write(String.format("%-20s %s%n", "Horario:", horarioElegido));
+    escritor.write(String.format("%-20s %s%n", "Sala:", salaElegida));
+    escritor.write(String.format("%-20s %s%n", "Tipo entrada:", entradaElegida));
+    escritor.write(String.format("%-20s %d%n", "Cantidad entradas:", cantidadEntradas));
 
-        System.out.println("El archivo se exportó correctamente en: D:\\Cineplanet.txt");
-    }
+    escritor.write("-------------------------------------\n");
+
+    escritor.write(String.format("%-20s S/%10.2f%n",
+            "Total entradas:", totalEntradas));
+
+    escritor.write(String.format("%-20s S/%10.2f%n",
+            "Total dulceria:", totalDulceria));
+
+    escritor.write(String.format("%-20s %s%n",
+            "Promocion:", promocionAplicada));
+
+    escritor.write(String.format("%-20s S/%10.2f%n",
+            "Descuento:", descuentoAplicado));
+
+    escritor.write(String.format("%-20s S/%10.2f%n",
+            "Subtotal:", subtotal));
+
+    escritor.write(String.format("%-20s S/%10.2f%n",
+            "IGV:", igv));
+
+    escritor.write(String.format("%-20s S/%10.2f%n",
+            "TOTAL:", totalFinal));
+
+    escritor.write("-------------------------------------\n");
+
+    escritor.write(String.format("%-20s %s%n",
+            "Metodo pago:", metodoPago));
+
+    escritor.write(String.format("%-20s S/%10.2f%n",
+            "Pago recibido:", pago));
+
+    escritor.write(String.format("%-20s S/%10.2f%n",
+            "Vuelto:", vuelto));
+
+    escritor.write("=====================================\n");
+    escritor.write(String.format("%25s%n", "Gracias por su compra"));
+    escritor.write("=====================================\n");
+
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+System.out.println("El archivo se exportó correctamente en: D:\\Cineplanet.txt");
         public static int seleccionarDeLista(ArrayList<String> lista) {
 
             for (int i = 0; i < lista.size(); i++) {
