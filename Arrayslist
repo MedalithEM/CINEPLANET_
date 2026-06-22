@@ -1432,67 +1432,73 @@ public class Cineplanet {
 
         try (FileWriter escritor = new FileWriter("D:\\Cineplanet.txt")) {
 
-            escritor.write("=====================================\n");
-            escritor.write(String.format("%25s%n", "BOLETA CINEPLANET"));
-            escritor.write("=====================================\n");
+            escritor.write("===========================\n");
+            escritor.write(String.format("%26s%n", "BOLETA CINEPLANET"));
+            escritor.write("===========================\n");
 
-            escritor.write(String.format("%-20s %s%n", "Cliente:", tipoCliente));
-            escritorLineaLarga(escritor,"Cine:", cineElegido);
-            escritorLineaLarga(escritor,"Categoria:", categoriaElegida);
-            escritorLineaLarga(escritor,"Pelicula:", peliculaElegida);
-            escritor.write(String.format("%-20s %s%n", "Formato:", formatoElegido));
-            escritor.write(String.format("%-20s %s%n", "Horario:", horarioElegido));
-            escritor.write(String.format("%-20s %s%n", "Sala:", salaElegida));
-            escritor.write(String.format("%-20s %s%n", "Tipo entrada:", entradaElegida));
-            escritor.write(String.format("%-20s %d%n", "Cantidad entradas:", cantidadEntradas));
+            escritor.write(String.format("%-18s %s%n", "Cliente:", tipoCliente));
+            escritorLineaLarga(escritor, "Cine:", cineElegido);
+            escritorLineaLarga(escritor, "Categoria:", categoriaElegida);
+            escritorLineaLarga(escritor, "Pelicula:", peliculaElegida);
 
-            escritor.write("-------------------------------------\n");
+            escritor.write(String.format("%-18s %s%n", "Formato:", formatoElegido));
+            escritor.write(String.format("%-18s %s%n", "Horario:", horarioElegido));
+            escritor.write(String.format("%-18s %s%n", "Sala:", salaElegida));
+            escritor.write(String.format("%-18s %s%n", "Tipo entrada:", entradaElegida));
+            escritor.write(String.format("%-18s %d%n", "Cantidad entradas:", cantidadEntradas));
 
-            escritor.write(String.format("%-20s S/%10.2f%n",
+            escritor.write("---------------------------\n");
+
+            escritor.write(String.format("%-18s S/%10.2f%n",
                     "Total entradas:", totalEntradas));
-            escritor.write("-------------------------------------\n");
-            escritor.write(String.format("%25s%n", "DULCERIA"));
-            escritor.write("-------------------------------------\n");
 
+            escritor.write("---------------------------\n");
+            escritor.write(String.format("%26s%n", "DULCERIA"));
+            escritor.write("---------------------------\n");
 
-            for(int i = 0; i < CarritoDulceria.size(); i++){
-                escritorLineaLarga(escritor, CarritoDulceria.get(i) + " x" + CarritoCantidadD.get(i), "S/" + CarritoPreciosD.get(i));
+            for (int i = 0; i < CarritoDulceria.size(); i++) {
+                escritorLineaLarga(
+                        escritor,
+                        CarritoDulceria.get(i) + " x" + CarritoCantidadD.get(i),
+                        "S/" + CarritoPreciosD.get(i)
+                );
             }
-            escritor.write(String.format("%-20s S/%10.2f%n",
+
+            escritor.write(String.format("%-18s S/%10.2f%n",
                     "Total dulceria:", totalDulceria));
 
-            escritor.write(String.format("%-20s %s%n",
-                    "Oferta aleatoria:", ofertaDescuento));
+            escritor.write(String.format("%-18s %s%n",
+                    "Oferta:", ofertaDescuento));
 
-            escritor.write(String.format("%-20s %s%n",
+            escritor.write(String.format("%-18s %s%n",
                     "Promocion:", promocionAplicada));
 
-            escritor.write(String.format("%-20s S/%10.2f%n",
+            escritor.write(String.format("%-18s S/%10.2f%n",
                     "Descuento:", descuentoAplicado));
 
-            escritor.write(String.format("%-20s S/%10.2f%n",
+            escritor.write(String.format("%-18s S/%10.2f%n",
                     "Subtotal:", subtotal));
 
-            escritor.write(String.format("%-20s S/%10.2f%n",
+            escritor.write(String.format("%-18s S/%10.2f%n",
                     "IGV:", igv));
 
-            escritor.write(String.format("%-20s S/%10.2f%n",
+            escritor.write(String.format("%-18s S/%10.2f%n",
                     "TOTAL:", totalFinal));
 
-            escritor.write("-------------------------------------\n");
+            escritor.write("---------------------------\n");
 
-            escritor.write(String.format("%-20s %s%n",
+            escritor.write(String.format("%-18s %s%n",
                     "Metodo pago:", metodoPago));
 
-            escritor.write(String.format("%-20s S/%10.2f%n",
+            escritor.write(String.format("%-18s S/%10.2f%n",
                     "Pago recibido:", pago));
 
-            escritor.write(String.format("%-20s S/%10.2f%n",
+            escritor.write(String.format("%-18s S/%10.2f%n",
                     "Vuelto:", vuelto));
 
-            escritor.write("=====================================\n");
-            escritor.write(String.format("%25s%n", "Gracias por su compra"));
-            escritor.write("=====================================\n");
+            escritor.write("===========================\n");
+            escritor.write(String.format("%28s%n", "Gracias por su compra"));
+            escritor.write("===========================\n");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -1502,37 +1508,31 @@ public class Cineplanet {
     }
     public static void escritorLineaLarga(FileWriter escritor, String titulo, String texto) throws IOException {
 
-        int ancho = 14; // caracteres por línea
+        int ancho = 24;
 
+        if (texto.length() <= ancho) {
 
-        if(texto.length() <= ancho){
-
-            escritor.write(String.format("%-20s %s%n",
+            escritor.write(String.format("%-18s %s%n",
                     titulo, texto));
 
-        }else{
+        } else {
 
-
-            escritor.write(String.format("%-20s %s%n",
+            escritor.write(String.format("%-18s %s%n",
                     titulo,
                     texto.substring(0, ancho)));
 
-
             int inicio = ancho;
 
-
-            while(inicio < texto.length()){
+            while (inicio < texto.length()) {
 
                 int fin = Math.min(inicio + ancho, texto.length());
 
-
-                escritor.write(String.format("%-20s %s%n",
+                escritor.write(String.format("%-18s %s%n",
                         "",
                         texto.substring(inicio, fin)));
 
                 inicio += ancho;
             }
-
         }
     }
 
